@@ -5,11 +5,7 @@
 // To keep your imports tidy, follow the ordering guidelines at
 // https://www.dartlang.org/guides/language/effective-dart/style#ordering
 import 'package:flutter/material.dart';
-// @required is defined in the meta.dart package
-import 'package:meta/meta.dart';
 
-// We use an underscore to indicate that these variables are private.
-// See https://www.dartlang.org/guides/language/effective-dart/design#libraries
 final _rowHeight = 100.0;
 final _borderRadius = BorderRadius.circular(_rowHeight / 2);
 
@@ -26,9 +22,7 @@ class Category extends StatelessWidget {
   ///
   /// A [Category] saves the name of the Category (e.g. 'Length'), its color for
   /// the UI, and the icon that represents it (e.g. a ruler).
-  // While the @required checks for whether a named parameter is passed in,
-  // it doesn't check whether the object passed in is null. We check that
-  // in the assert statement.
+  // TODO: You'll need the name, color, and iconLocation from main.dart
   const Category({
     Key key,
     @required this.name,
@@ -56,26 +50,19 @@ class Category extends StatelessWidget {
           borderRadius: _borderRadius,
           highlightColor: color,
           splashColor: color,
-          // We can use either the () => function() or the () { function(); }
-          // syntax.
-          onTap: () {
-            print('I was tapped!');
-          },
+          // The same result but different syntax
+          onTap: () => print('I was tapped!'),
+//          onTap: () {
+//            print('I was tapped!');
+//          },
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              // There are two ways to denote a list: `[]` and `List()`.
-              // Prefer to use the literal syntax, i.e. `[]`, instead of `List()`.
-              // You can add the type argument if you'd like, i.e. <Widget>[].
-              // See https://www.dartlang.org/guides/language/effective-dart/usage#do-use-collection-literals-when-possible
               children: [
                 Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Icon(
-                    iconLocation,
-                    size: 60.0,
-                  ),
+                  child: Icon(iconLocation, size: 60.0),
                 ),
                 Center(
                   child: Text(
@@ -83,7 +70,7 @@ class Category extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headline,
                   ),
-                ),
+                )
               ],
             ),
           ),
