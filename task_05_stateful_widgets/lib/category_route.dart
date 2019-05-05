@@ -17,10 +17,16 @@ final _backgroundColor = Colors.green[100];
 /// While it is named CategoryRoute, a more apt name would be CategoryScreen,
 /// because it is responsible for the UI at the route's destination.
 // TODO: Make CategoryRoute a StatefulWidget
-class CategoryRoute extends StatelessWidget {
+class CategoryRoute extends StatefulWidget {
   const CategoryRoute();
 
-  // TODO: Create State object for the CategoryRoute
+  @override
+  _CategoryRouteState createState() => _CategoryRouteState();
+// TODO: Create State object for the CategoryRoute
+}
+
+class _CategoryRouteState extends State<CategoryRoute> {
+  final _categories = <Category>[];
 
   static const _categoryNames = <String>[
     'Length',
@@ -43,6 +49,19 @@ class CategoryRoute extends StatelessWidget {
     Colors.purpleAccent,
     Colors.red,
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    for (var i = 0; i < _categoryNames.length; i++) {
+      _categories.add(Category(
+        name: _categoryNames[i],
+        color: _baseColors[i],
+        iconLocation: Icons.cake,
+        units: _retrieveUnitList(_categoryNames[i]),
+      ));
+    }
+  }
 
   /// Makes the correct number of rows for the list view.
   ///
