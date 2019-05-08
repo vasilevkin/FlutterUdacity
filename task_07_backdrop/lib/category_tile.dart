@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'category.dart';
-import 'unit_converter.dart';
+//import 'unit_converter.dart';
 
 // We use an underscore to indicate that these variables are private.
 // See https://www.dartlang.org/guides/language/effective-dart/design#libraries
@@ -32,28 +32,28 @@ class CategoryTile extends StatelessWidget {
         assert(onTap != null),
         super(key: key);
 
-  /// Navigates to the [UnitConverter].
-  void _navigateToConverter(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute<Null>(
-      builder: (BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 1.0,
-            title: Text(
-              category.name,
-              style: Theme.of(context).textTheme.display1,
-            ),
-            centerTitle: true,
-            backgroundColor: category.color,
-          ),
-          body: UnitConverter(category: category),
-          // This prevents the attempt to resize the screen when the keyboard
-          // is opened
-          resizeToAvoidBottomPadding: false,
-        );
-      },
-    ));
-  }
+//  /// Navigates to the [UnitConverter].
+//  void _navigateToConverter(BuildContext context) {
+//    Navigator.of(context).push(MaterialPageRoute<Null>(
+//      builder: (BuildContext context) {
+//        return Scaffold(
+//          appBar: AppBar(
+//            elevation: 1.0,
+//            title: Text(
+//              category.name,
+//              style: Theme.of(context).textTheme.display1,
+//            ),
+//            centerTitle: true,
+//            backgroundColor: category.color,
+//          ),
+//          body: UnitConverter(category: category),
+//          // This prevents the attempt to resize the screen when the keyboard
+//          // is opened
+//          resizeToAvoidBottomPadding: false,
+//        );
+//      },
+//    ));
+//  }
 
   /// Builds a custom widget that shows [Category] information.
   ///
@@ -75,7 +75,8 @@ class CategoryTile extends StatelessWidget {
           // We can use either the () => function() or the () { function(); }
           // syntax.
           // TODO: This should call the onTap() passed into the constructor
-          onTap: () => _navigateToConverter(context),
+          onTap: () => onTap(category),
+//          onTap: () => _navigateToConverter(context),
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
