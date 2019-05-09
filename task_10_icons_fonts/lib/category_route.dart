@@ -71,6 +71,17 @@ class _CategoryRouteState extends State<CategoryRoute> {
       'error': Color(0xFF912D2D),
     }),
   ];
+
+  static const _icons = <String>[
+    'assets/icons/area.png',
+    'assets/icons/currency.png',
+    'assets/icons/digital_storage.png',
+    'assets/icons/length.png',
+    'assets/icons/mass.png',
+    'assets/icons/power.png',
+    'assets/icons/time.png',
+    'assets/icons/volume.png',
+  ];
   // TODO: Add image asset paths here
 
   @override
@@ -87,8 +98,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
   Future<void> _retrieveLocalCategories() async {
     // Consider omitting the types for local variables. For more details on Effective
     // Dart Usage, see https://www.dartlang.org/guides/language/effective-dart/usage
-    final json = DefaultAssetBundle
-        .of(context)
+    final json = DefaultAssetBundle.of(context)
         .loadString('assets/data/regular_units.json');
     final data = JsonDecoder().convert(await json);
     if (data is! Map) {
@@ -103,8 +113,9 @@ class _CategoryRouteState extends State<CategoryRoute> {
         name: key,
         units: units,
         color: _baseColors[categoryIndex],
+        iconLocation: _icons[categoryIndex],
         // TODO: Replace the placeholder icon with an icon image path
-        iconLocation: Icons.cake,
+//        iconLocation: Icons.cake,
       );
       setState(() {
         if (categoryIndex == 0) {
